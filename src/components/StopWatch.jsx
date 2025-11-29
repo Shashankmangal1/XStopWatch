@@ -1,14 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function StopWatch() {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const timerRef = useRef(null);
 
-  
+  // Start
   const startTimer = () => {
     if (isRunning) return;
-
     setIsRunning(true);
 
     timerRef.current = setInterval(() => {
@@ -16,20 +15,25 @@ function StopWatch() {
     }, 1000);
   };
 
-  
+  // Stop
   const stopTimer = () => {
     clearInterval(timerRef.current);
     setIsRunning(false);
   };
 
-  
+  // Reset
   const resetTimer = () => {
     clearInterval(timerRef.current);
     setSeconds(0);
     setIsRunning(false);
   };
 
-  
+  // Cleanup on unmount (good practice)
+  useEffect(() => {
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  // Format time → m:ss (0:00)
   const formatTime = () => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -40,8 +44,8 @@ function StopWatch() {
     <div className="stopwatch-container">
       <h1>Stopwatch</h1>
 
-      <h2>Time</h2>
-      <div className="display">{formatTime()}</div>
+      {/* Render label and formatted time together so tests can find "Time: 0:00" */}
+      <h2>Time: {formatTime()}</h2>
 
       <div>
         {isRunning ? (
