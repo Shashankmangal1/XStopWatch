@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+XStopwatch – React Stopwatch Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+XStopwatch is a fully responsive, React-based stopwatch application built for the Crio Frontend Buildout Series.
+The app supports starting, stopping, and resetting time while displaying the timer in minutes:seconds format.
 
-## Available Scripts
+⏱️ Features
 
-In the project directory, you can run:
+Start, Stop, Reset functionality
 
-### `npm start`
+Time displays in correct format: 0:00, 1:05, 2:59, etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Time updates every second while running
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Swap between Start ↔ Stop depending on state
 
-### `npm test`
+Resets back to 0:00 on Reset
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Accurate time tracking using JavaScript intervals
 
-### `npm run build`
+Built with modern React Hooks (useState, useRef, useEffect)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🧰 Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+JavaScript (ES6+)
 
-### `npm run eject`
+CSS3
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+📸 Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+(Replace with actual screenshots)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Initial screen (0:00 with Start/Reset buttons)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+After clicking Start (timer running)
 
-## Learn More
+After clicking Stop (paused)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After clicking Reset (back to 0:00)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🏗️ Project Structure
+XSTOPWATCH-APP/
+ ├─ public/
+ │   └─ index.html
+ ├─ src/
+ │   ├─ components/
+ │   │   └─ StopWatch.jsx
+ │   ├─ App.js
+ │   ├─ index.js
+ │   └─ index.css
+ ├─ package.json
+ └─ README.md
 
-### Code Splitting
+⚙️ Installation & Setup
+1. Clone the repository
+git clone <repo-url>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Install dependencies
+npm install
 
-### Analyzing the Bundle Size
+3. Start the development server
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+The app will open at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+http://localhost:3000
 
-### Advanced Configuration
+🔧 How It Works
+✔ Start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Begins counting using setInterval and updates the timer every second.
 
-### Deployment
+✔ Stop
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Pauses the timer by clearing the interval.
 
-### `npm run build` fails to minify
+✔ Reset
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Stops the timer and resets the display back to 0:00.
+
+✔ Time Formatting
+
+Minutes and seconds are derived from the total seconds:
+
+mins = Math.floor(seconds / 60)
+secs = seconds % 60
+
+
+Displayed using:
+
+{mins}:{secs.toString().padStart(2, "0")}
+
+🧪 Crio Requirements Covered
+
+✔ Default UI shows:
+
+Stopwatch
+Time: 0:00
+[Start] [Reset]
+
+
+✔ Timer updates in real time
+✔ Buttons use exact terms: Start, Stop, Reset
+✔ Time format matches Crio tests (1:05, not 1:5)
+✔ Suggestion-free, clean design
+✔ Functional-component based implementation
+✔ Matches the screenshots provided in Crio workspace
+✔ Passes Cypress-based assessment cases
+
+📜 License
+
+This project is created as part of the Crio Frontend Buildout Program.
